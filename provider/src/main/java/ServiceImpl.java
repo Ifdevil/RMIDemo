@@ -21,10 +21,10 @@ public class ServiceImpl implements Service {
 
         try {
             String name = "Service";
-            Service service = new ServiceImpl();
-            Service stub = (Service) UnicastRemoteObject.exportObject(service,0);
-            Registry registry = LocateRegistry.createRegistry(1002);
-            registry.bind(name,stub);
+            Service service = new ServiceImpl();//实例一个服务对象
+            Service stub = (Service) UnicastRemoteObject.exportObject(service,0);//实例一个服务存根
+            Registry registry = LocateRegistry.createRegistry(1002);//创建本地注册中心
+            registry.bind(name,stub);//注册服务和端口
             System.out.println("ServiceImpl bound");
         }catch (Exception e){
             e.printStackTrace();
